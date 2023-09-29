@@ -23,7 +23,6 @@ const ProductCard = ({
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state?.products.cart);
   const isInCart = cart.some((eachItem: productType) => eachItem.id === id);
-
   return (
     <section className="flex flex-col justify-start items-start mx-[20px] my-[30px] w-[280px]">
       <figure className="relative w-full h-[250px] rounded-[20px] mb-[20px]">
