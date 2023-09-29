@@ -70,7 +70,7 @@ const Home = () => {
           price: json.price,
           image: json.image,
           id: json.id,
-          rate: json.rating.rate,
+          rating: json.rating.rate,
           category: json.category,
         }));
         dispatch(loadProducts(productsData));

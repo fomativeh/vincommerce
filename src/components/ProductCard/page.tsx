@@ -25,6 +25,7 @@ const ProductCard = ({
   const isInCart = cart.some((eachItem: productType) => eachItem.id === id);
   return (
     <section className="flex flex-col justify-start items-start mx-[20px] my-[30px] w-[280px]">
+     <> {console.log(rating)}</>
       <figure className="relative w-full h-[250px] rounded-[20px] mb-[20px]">
         <Image src={image} alt={"Product image"} fill />
       </figure>
