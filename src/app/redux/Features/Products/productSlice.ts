@@ -1,13 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export type Product = {
+  id: number,
+  category: string,
+  description: string,
+  image: string,
+  price: number,
+  rating: number,
+  title: string
+}
+
 type ProductState = {
-  products: any;
-  cart: any;
+  products: Product[];
+  cart: cartItem[]; 
 };
+
+type cartItem = Product & {
+  qty:number
+}
 
 const initialState: ProductState = {
   products: [],
-  cart: [],
+  cart: [] as cartItem[],
 };
 
 export const productSlice = createSlice({
@@ -22,7 +36,7 @@ export const productSlice = createSlice({
     },
     addQuantity: (state, action) => {
       const itemId = action.payload;
-      const updatedCart = state.cart.map((item: any) => {
+      const updatedCart = state.cart.map((item: cartItem) => {
         if (item.id === itemId) {
           return { ...item, qty: item.qty + 1 };
         }
@@ -32,7 +46,7 @@ export const productSlice = createSlice({
     },
     reduceQuantity: (state, action) => {
       const itemId = action.payload;
-      const updatedCart = state.cart.map((item: any) => {
+      const updatedCart = state.cart.map((item: cartItem) => {
         if (item.id === itemId && item.qty > 1) {
           return { ...item, qty: item.qty - 1 };
         }
@@ -41,7 +55,7 @@ export const productSlice = createSlice({
       state.cart = updatedCart;
     },
     removeFromCart: (state, action) => {
-      state.cart = state.cart.filter((item: any) => item.id !== action.payload);
+      state.cart = state.cart.filter((item: cartItem) => item.id !== action.payload);
     },
   },
 });
